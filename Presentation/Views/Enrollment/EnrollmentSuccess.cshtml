@@ -1,0 +1,30 @@
+@* @{
+    ViewData["Title"] = "Enrollment Successful";
+}
+
+<div class="container">
+    <h2>Enrollment Successful</h2>
+    <p>You have been successfully enrolled in the course.</p>
+    <a href="@Url.Action("Enroll", "Enrollment")" class="btn btn-primary">Enroll in Another Course</a>
+</div> *@
+
+@{
+    ViewData["Title"] = "Enrollment Successful";
+}
+
+<div class="container">
+    <h2>Enrollment Successful</h2>
+    
+    @if (Context.Session.GetString("EnrollmentSuccess") != null)
+    {
+        <p>@Context.Session.GetString("EnrollmentSuccess")</p>
+        // Clear the session message after displaying it
+        Context.Session.Remove("EnrollmentSuccess");
+    }
+    else
+    {
+        <p>You have been successfully enrolled in the course.</p>
+    }
+    
+    <a href="@Url.Action("Enroll", "Enrollment")" class="btn btn-primary">Enroll in Another Course</a>
+</div>

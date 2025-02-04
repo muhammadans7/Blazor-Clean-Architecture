@@ -1,0 +1,20 @@
+@model WebApplication1.Domain.Models.DropCourseViewModel
+
+@if (Model.Courses != null && Model.Courses.Any())
+{
+    <h3>Courses Enrolled:</h3>
+    <div>
+        @foreach (var course in Model.Courses)
+        {
+            <form class="dropCourseForm" method="post">
+                <input type="hidden" name="CourseName" value="@course.CourseName" />
+                <input type="hidden" name="Email" value="@Model.Email" />
+                <button type="submit" class="btn btn-danger">Drop @course.CourseName</button>
+            </form>
+        }
+    </div>
+}
+else
+{
+    <p>No courses found for the provided email.</p>
+}

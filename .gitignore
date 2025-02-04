@@ -1,0 +1,16 @@
+# Build directories
+bin/
+obj/
+
+# User secrets (contains sensitive information)
+appsettings.Development.json
+appsettings.json
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.user
+
+# User-specific files
+.user
+.vs/

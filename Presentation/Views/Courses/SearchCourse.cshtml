@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Search Course";
+}
+
+<div class="container mt-5">
+    <h2>@ViewData["Title"]</h2>
+
+    <form asp-action="SearchCourse" method="post">
+        <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input type="text" id="courseName" name="courseName" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <div class="col-md-6">
+            <a href="@Url.Action("EnrollCourse", "Courses")" class="btn btn-success btn-lg btn-block">
+                Enroll in Course
+            </a>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info mt-4">
+            @ViewBag.Message
+        </div>
+    }
+</div>

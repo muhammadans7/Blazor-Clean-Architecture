@@ -1,0 +1,49 @@
+@model IEnumerable<WebApplication1.Domain.Models.Course>
+
+@{
+    ViewData["Title"] = "Your Enrolled Courses";
+}
+
+<div class="container">
+    <h2>Check Your Enrolled Courses</h2>
+    <form asp-action="CheckCourses" asp-controller="UserCourses" method="post">
+        <div class="form-group">
+            <label for="email">Enter Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Check Courses</button>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <h3>Enrolled Courses</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Enrollment ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <td>@course.CourseName</td>
+                        @* <td>@course.Username</td>
+                        <td>@course.Email</td>
+                        <td>@course.EnrollmentId</td> *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No courses found for the given email.</p>
+    }
+</div> 
+
+
+

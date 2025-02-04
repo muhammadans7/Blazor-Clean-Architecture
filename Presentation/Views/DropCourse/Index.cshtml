@@ -1,0 +1,46 @@
+@model WebApplication1.Domain.Models.DropCourseViewModel
+
+@{
+    ViewData["Title"] = "Drop Courses";
+}
+
+<div class="container">
+    <h2>Drop Courses</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <form asp-action="Index" asp-controller="DropCourse" method="post">
+        <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="Email" class="form-control" placeholder="Enter your email" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    @if (Model.Courses != null && Model.Courses.Any())
+    {
+        <h3>Courses Enrolled:</h3>
+        <div>
+            @foreach (var course in Model.Courses)
+            {
+                <form asp-action="DeleteCourse" asp-controller="DropCourse" method="post">
+                    <input type="hidden" name="CourseName" value="@course.CourseName" />
+                    <input type="hidden" name="Email" value="@Model.Email" />
+                    <button type="submit" class="btn btn-danger">Drop @course.CourseName</button>
+                </form>
+            }
+        </div>
+    }
+</div>

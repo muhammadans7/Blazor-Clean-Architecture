@@ -1,0 +1,16 @@
+@model IEnumerable<WebApplication1.Domain.Models.Course>
+
+<div class="row">
+    @foreach (var course in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@course.CourseName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Instructor: @course.Instructor</h6>
+                    <a href="@Url.Action("Details", "Courses", new { id = course.CourseId })" class="btn btn-info">Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

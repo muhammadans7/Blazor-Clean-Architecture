@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "File Upload";
+}
+
+<div class="container">
+    <h2>Upload a File</h2>
+
+    <!-- File Upload Form -->
+    <form id="uploadForm" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="uploadedFile">Choose a file to upload</label>
+            <input type="file" id="uploadedFile" name="uploadedFile" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Upload File</button>
+    </form>
+
+    <div id="responseMessage" class="mt-3"></div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Handle form submission via AJAX
+            $('#uploadForm').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this); // Create FormData object from the form
+
+                $.ajax({
+                    url: '@Url.Action("UploadFile", "Upload")', // Ensure this matches your action name
+                    method: 'POST',
+                    data: formData,
+                    processData: false, // Prevent jQuery from automatically transforming the data into a query string
+                    contentType: false, // Set content type to false to let the browser set it
+                    success: function (response) {
+                        // Display success or error message
+                        $('#responseMessage').html(`<div class="alert alert-${response.success ? 'success' : 'danger'}">${response.message}</div>`);
+                    },
+                    error: function () {
+                        $('#responseMessage').html('<div class="alert alert-danger">An error occurred while uploading the file.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+}

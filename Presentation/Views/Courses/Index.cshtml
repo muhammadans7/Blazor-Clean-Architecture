@@ -1,0 +1,86 @@
+@model IEnumerable<WebApplication1.Domain.Models.Course>
+
+<div class="container mt-5">
+    <h2>Available Courses</h2>
+    
+    <!-- Button to trigger AJAX request -->
+    <button id="fetchCoursesButton" class="btn btn-primary mb-3">Fetch Courses</button>
+    
+    <!-- Div to display the list of courses fetched by AJAX -->
+    <div id="coursesList"></div>
+    
+    
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Handle the button click event
+            $('#fetchCoursesButton').click(function() {
+                $.ajax({
+                    url: '@Url.Action("FetchCourses", "Courses")', // URL of the action method
+                    method: 'GET',
+                    success: function(data) {
+                        // Inject the returned HTML into the coursesList div
+                        $('#coursesList').html(data);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred while fetching the courses.");
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+@* @model IEnumerable<CourseraClone.Models.Course>
+
+<div class="container mt-5">
+    <h2>Available Courses</h2>
+    
+    <!-- Button to trigger AJAX request -->
+    <button id="fetchCoursesButton" class="btn btn-primary mb-3">Fetch Courses</button>
+    
+    <!-- Div to display the list of courses fetched by AJAX -->
+    <div id="coursesList"></div>
+    
+    <!-- Existing course cards -->
+    <div class="row">
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@course.CourseName</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Instructor: @course.Instructor</h6>
+                        <a href="@Url.Action("Details", "Courses", new { id = course.CourseId })" class="btn btn-info">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> *@
+
+
+@* @model IEnumerable<CourseraClone.Models.Course>
+
+<div class="container mt-5">
+    <h2>Available Courses</h2>
+    <div class="row">
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@course.CourseName</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Instructor: @course.Instructor</h6>
+                        <a href="@Url.Action("Details", "Courses", new { id = course.CourseId })" class="btn btn-info">Details</a>
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div> *@

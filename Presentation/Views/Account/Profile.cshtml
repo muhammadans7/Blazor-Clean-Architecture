@@ -1,0 +1,56 @@
+@* @model CourseraClone.Models.UserProfile
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Your Profile</h2>
+
+<form asp-action="UpdateProfile" method="post">
+    <div class="form-group">
+        <label for="UserName">User Name</label>
+        <input type="text" id="UserName" name="UserName" value="@Model.UserName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" value="@Model.Email" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" id="LastName" name="LastName" value="@Model.LastName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+</form> *@
+@model WebApplication1.Domain.Models.UserProfile
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Your Profile</h2>
+
+<form asp-action="UpdateProfile" method="post">
+    <div class="form-group">
+        <label for="UserName">User Name</label>
+        <input type="text" id="UserName" name="UserName" value="@Model.UserName" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" value="@Model.Email" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" id="LastName" name="LastName" value="@Model.LastName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+</form>

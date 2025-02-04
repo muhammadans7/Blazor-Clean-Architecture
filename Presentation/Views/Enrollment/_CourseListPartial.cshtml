@@ -1,0 +1,19 @@
+@model List<WebApplication1.Domain.Models.Course>
+
+<div class="form-group">
+    <label for="courseName">Course Name</label>
+    <select id="courseName" name="CourseName" class="form-control" required>
+        <option value="">Select a course</option>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var course in Model)
+            {
+                <option value="@course.CourseName">@course.CourseName</option>
+            }
+        }
+        else
+        {
+            <option disabled>No courses available</option>
+        }
+    </select>
+</div>
